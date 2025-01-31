@@ -18,6 +18,28 @@ void split(Node*& in, Node*& odds, Node*& evens)
 {
   /* Add code here */
 // WRITE YOUR CODE HERE
+  if(in == nullptr){
+    return;
+  }
+
+  Node* curr = in;
+  in = in->next;
+
+  //odd
+  if(curr->value % 2 == 1){
+    curr->next = odds;
+    odds = curr;
+  }else if(curr->value % 2 == 0){
+    curr->next = evens;
+    evens = curr;
+  }
+
+  split(in, odds, evens);
 }
+
+/*
+check if divisible by 2, if so then point current node to even, then split with next node
+
+*/
 
 /* If you needed a helper function, write it here */
